@@ -1,3 +1,6 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import math
 def leastsquare():
     x_values = list(map(int, input("Enter all x coordinates separated by commas: ").split(",")))
     y_values = list(map(int, input("Enter all y coordinates separated by commas: ").split(",")))
@@ -25,10 +28,19 @@ def leastsquare():
             x_squares.append(b)
         
         m = sum(products) / sum(x_squares)
-        print(m)
         b = y_mean - (m * x_mean)
-        print(b)
         print(f"y = {round(m,2)}x + {round(b,2)}")
+
+        x = np.linspace(-1,20)
+        y = m*x+b
+        plt.plot(x,y)
+        plt.plot(x_values, y_values, 'o')
+        plt.xlabel("x-axis")
+        plt.ylabel("y-axis")
+        plt.title("line of best fit")
+        plt.show()
+
+
 
 
     else:
